@@ -14,14 +14,14 @@ int main()
     input_Arr(a,n);
     cout<<"Hay nhap gia tri muon tim kiem: ";
     int x; cin>>x;
-    cout<<"Gia tri can tim o vi tri"<<linear_Searching(a,x,n);
+    cout<<"Gia tri can tim o vi tri "<<linear_Searching(a,x,n);
     delete [] a;
 }
 
 int linear_Searching(int* a, int x , int n)
 {
     int i=0;
-    //a[n]=x;
+    a[n]=x; //Đặt lính canh 
     while( a[i] != x)
     {
         i++;
@@ -30,7 +30,7 @@ int linear_Searching(int* a, int x , int n)
     {
         return i+1;
     }
-    else
+    else  //Khi mà nó đã quét hết mảng thì nó sẽ gặp nó đã tìm được x ở lính canh nhưng lính canh không nằm trong mảng nên trả về -1
     {
         return -1;
     }
