@@ -2,24 +2,18 @@
 
 using namespace std;
 
-long file_LinearSearching(string,int);
+long file_LinearSearching(string,char);
 
 int main()
 {
-    fstream file;
-    file.open("D:\\DATE\\Dev Workspace\\data structures and algorithms\\Data-Structures-and-Algorithms-PTIT\\Data-Structures-and-Algorithms-PTIT\\Searching\\File_Searching\\Data.text");
-    if(!file.is_open()) 
-    {
-        return -1;
-    }
     string filename = "D:\\DATE\\Dev Workspace\\data structures and algorithms\\Data-Structures-and-Algorithms-PTIT\\Data-Structures-and-Algorithms-PTIT\\Searching\\File_Searching\\Data.text";
-    int point;
+    char point;
     cout<<"Hay nhap gia tri can tim: "; cin>>point;
     cout<<"Gia tri can tim o vi tri: "<<file_LinearSearching(filename,point);
     return 0;
 }
 
-long file_LinearSearching(string file, int point)
+long file_LinearSearching(string file, char point)
 {
     fstream File;
     File.open(file);
@@ -27,18 +21,19 @@ long file_LinearSearching(string file, int point)
     {
         return -1;
     }
-    int Value = 0;
-    int i = 0;
-    while (Value != point && i != File.eof())
+    char Value;
+    long k = 0;
+    int SizeOfPoint = sizeof(point);
+    while (!File.eof())
     {
-        i = i + sizeof(point);
+        File.read(&Value,SizeOfPoint);
+        k = k + SizeOfPoint;
+        if(Value == point)
+        {
+            File.close();
+            return k;
+        }
     }
-    if(i != File.eof())
-    {
-        return i;
-    }
-    else
-    {
-        return -1;
-    }
+    File.close();
+    return -1;
 }
