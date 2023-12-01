@@ -10,7 +10,7 @@ void output(int*, int);
 int main()
 {
     int n;
-    cout<<"Hay nhap so phan tu co trong mang: "; cin>>n;
+    cout<<"Hay nhap so phan tu co trong mang la: "; cin>>n;
     int* Arr = new int[n];
     input(Arr,n);
     cout<<"Mang vua nhap la: ";
