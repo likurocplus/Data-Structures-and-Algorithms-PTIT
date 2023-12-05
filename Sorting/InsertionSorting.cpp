@@ -4,7 +4,7 @@ using namespace std;
 
 void input(int*,int);
 void swap(int,int);
-void BubbleSort(int* Arr, int);
+void InsertionSort(int* Arr, int);
 void output(int*, int);
 
 int main()
@@ -15,7 +15,7 @@ int main()
     input(Arr,n);
     cout<<"Mang vua nhap la: ";
     output(Arr,n);
-    BubbleSort(Arr,n);
+    InsertionSort(Arr,n);
     cout<<"Mang vua duoc sap xep la: ";
     output(Arr,n);
     system("pause");
@@ -46,20 +46,22 @@ void swap(int a,int b)
     a = b;
     b = tmp;
 }
-void BubbleSort(int* Arr, int n)
+void InsertionSort(int* Arr, int n)
 {
-    int tmp;
-    for(int i = 0 ; i <= n-1 ; i++)
+    int Index ; // Chia mảng thành 2 phần phần bên trái index là sort rồi còn bên phải là unsort
+    int Current ; //Lưu giá trị tại index
+    int Position; //Tìm vị trí
+    for(Index = 1; Index < n; Index++)
     {
-        for(int j=0 ; j <= n-1 ; j++)
+        Current = Arr[Index]; //Lưu giá trị tại index
+        Position = Index -1 ; //Tìm vị trí
+        while(Position >= 0 && Arr[Position] > Current)
         {
-            if(Arr[j]>Arr[i])
-            {
-                tmp = Arr[j];
-                Arr[j] = Arr[i];
-                Arr[i] = tmp;
-            }
+            Arr[Position + 1] = Arr[Position];
+            --Position;
         }
+        Arr[Position + 1] = Current;
     }
+    
 }
 
