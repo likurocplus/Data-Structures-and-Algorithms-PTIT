@@ -62,6 +62,5 @@ void InsertionSort(int* Arr, int n)
         }
         Arr[Position + 1] = Current;
     }
-    
 }
 
